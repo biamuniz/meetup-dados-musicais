@@ -20,7 +20,7 @@ editor:
 
 ::::: columns
 ::: {.column width="35%"}
-![](assets/biancamuniz.jp){alt="Bianca Muniz" style="border-radius: 50%;     max-"}
+![](assets/biancamuniz.jpg)
 :::
 
 ::: {.column width="65%" style="font-size:25px"}
