@@ -20,7 +20,7 @@ editor:
 
 ::::: columns
 ::: {.column width="35%"}
-![](assets/biancamuniz.jpg){alt="Bianca Muniz" style="border-radius: 50%;     max-"}
+![](assets/biancamuniz.jp){alt="Bianca Muniz" style="border-radius: 50%;     max-"}
 :::
 
 ::: {.column width="65%" style="font-size:25px"}
@@ -39,41 +39,62 @@ editor:
 -   Aplicar processamento de texto para explorar letras e metadados.
 -   Usar pacotes do R para visualizações sobre músicas
 
+## Por que analisar texto é importante?
+
+-   Sentimento, temas, frequência de palavras.
+-   Música - texto - dado não-estruturado - dado estruturado --\> objeto de análise!
+
 # Algumas definições {background-color="#562457"}
 
-## Tabset example
+## Algumas definições
 
 ::: panel-tabset
 ## Corpus
 
-Content here for tabset 1 :)
+Um corpus é uma coleção de textos usada para análise.
+Exemplo: Todas as letras de músicas de um artista, um gênero musical ou de um período específico.
+Um corpus pode ser usado para identificar padrões, como temas recorrentes ou tendências linguísticas.
 
 ## Token
 
-More content here, for tabset 2 :)
+Um token é uma unidade mínima de texto, geralmente uma palavra.
+
+Exemplo: Na frase "Fiel como um cão", os tokens são: "fiel", "como", "um", "cão".
+
+## Bigramas
+
+Bigramas são pares consecutivos de palavras em um texto.
+
+Exemplo: No verso "Porque chumbo trocado não dói" os bigramas são "Porque chumbo", "chumbo trocado", "trocado não", "não dói"
+
+## Stopwords
+
+Palavras comuns que geralmente não agregam significado em uma análise, como "o", "de", "e".
+
+Exemplo: "Minha vó é show de bola / Aprendeu lá em Angola / Encontrou meu corpo aberto e fechou" - sem as stopwords: "minha vó é bola aprendeu lá angola encontrou meu corpo aberto fechou"
 :::
 
 ## Fontes de dados:
 
--   APIs (Spotify, Genius, Vagalume, etc.).
+-   APIs (Spotify, Genius, Vagalume, etc.),
 
--   Planilhas com metadados musicais.
+-   Planilhas com metadados musicais,
 
 -   Rankings (Billboard, [Spotify](https://charts.spotify.com/charts/view/regional-br-daily/latest)...)
 
 -   Seus dados!
 
--   O que investigar em um dataset musical: Artista, Álbum, Ano, Letras, Gênero, Popularidade.
+O que investigar em um dataset musical: artista, album, ano, letras, gênero, popularidade.
 
 ## Pacotes úteis
 
--   `tidyverse` (manipulação de dados).
+-   `dplyr` (manipulação de dados);
 
 -   `text` (análise de texto);
 
--   `ggplot2` (visualização).
+-   `ggplot2` (visualização);
 
--   `tidytext` (NLP para texto).
+-   `tidytext` (NLP para texto);
 
 -   `spotifyr` (coleta de dados da API Spotify).
 
@@ -129,10 +150,6 @@ More content here, for tabset 2 :)
 ![](assets/Brasil-é-o-país-que-mais-passou-a-ouvir-músicas-tristes-na-quarentena-20-06-2020-Ilustrada-Folha-12-04-2024_07_47_AM.png){fig-align="center" width="400"}
 ::::::::::::
 
-## Por que analisar texto é importante?
-
--   Sentimento, temas, frequência de palavras.
-
 ## Fluxo de trabalho:
 
 -   Limpeza e tokenização (tidytext);
@@ -141,3 +158,7 @@ More content here, for tabset 2 :)
 -   Análise de sentimentos em letras de músicas.
 
 # E o que vamos analisar hoje? {background-color="#562457"}
+
+## maRRom
+
+![](assets/marrom.png){style="border-radius: 50%;     max-" fig-align="center"}
