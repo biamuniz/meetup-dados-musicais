@@ -39,9 +39,9 @@ editor:
 -   Aplicar processamento de texto para explorar letras e metadados.
 -   Usar pacotes do R para visualizações sobre músicas
 
-## Por que analisar texto é importante?
+## Por que analisar texto?
 
--   Sentimento, temas, frequência de palavras.
+-   Padrões, sentimento, temas, frequência de palavras
 -   Música - texto - dado não-estruturado - dado estruturado --\> objeto de análise!
 
 # Algumas definições {background-color="#562457"}
@@ -51,27 +51,28 @@ editor:
 ::: panel-tabset
 ## Corpus
 
-Um corpus é uma coleção de textos usada para análise.
-Exemplo: Todas as letras de músicas de um artista, um gênero musical ou de um período específico.
+-   Um corpus é uma coleção de textos usada para análise.
+
+-   Exemplo: Todas as letras de músicas de um artista, um gênero musical ou de um período específico.
 Um corpus pode ser usado para identificar padrões, como temas recorrentes ou tendências linguísticas.
 
 ## Token
 
-Um token é uma unidade mínima de texto, geralmente uma palavra.
+-   Um token é uma unidade mínima de texto, geralmente uma palavra.
 
-Exemplo: Na frase "Fiel como um cão", os tokens são: "fiel", "como", "um", "cão".
+-   Exemplo: Na frase "Fiel como um cão", os tokens são: "fiel", "como", "um", "cão".
 
 ## Bigramas
 
-Bigramas são pares consecutivos de palavras em um texto.
+-   Bigramas são pares consecutivos de palavras em um texto.
 
-Exemplo: No verso "Porque chumbo trocado não dói" os bigramas são "Porque chumbo", "chumbo trocado", "trocado não", "não dói"
+-   Exemplo: No verso "Porque chumbo trocado não dói" os bigramas são "Porque chumbo", "chumbo trocado", "trocado não", "não dói"
 
 ## Stopwords
 
-Palavras comuns que geralmente não agregam significado em uma análise, como "o", "de", "e".
+-   Palavras comuns que geralmente não agregam significado em uma análise, como "o", "de", "e".
 
-Exemplo: "Minha vó é show de bola / Aprendeu lá em Angola / Encontrou meu corpo aberto e fechou" - sem as stopwords: "minha vó é bola aprendeu lá angola encontrou meu corpo aberto fechou"
+-   Exemplo: "Minha vó é show de bola / Aprendeu lá em Angola / Encontrou meu corpo aberto e fechou" - sem as stopwords: "minha vó é bola aprendeu lá angola encontrou meu corpo aberto fechou"
 :::
 
 ## Fontes de dados:
