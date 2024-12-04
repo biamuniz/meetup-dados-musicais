@@ -1,0 +1,143 @@
+---
+title: "Analisando dados musicais com R"
+subtitle: "utilizando pacotes para processamento de texto"
+author: "04/12/2024"
+format: 
+  rladies-revealjs:
+    footer: "R-Ladies São Paulo"
+incremental: false
+embed-resources: true
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+## Oi, eu sou a Bianca!
+
+::: {#nome style="font-size:30px"}
+{{< fa brands linkedin size=1.4xl >}} [bmuniz](https://www.linkedin.com/in/bmuniz/) {{< fa brands github size=1.4xl >}} [biamuniz](https://github.com/biamuniz) {{< fa brands bluesky size=1.4xl >}} [biancamuniz](https://bsky.app/profile/biancamuniz.bsky.social)
+:::
+
+::::: columns
+::: {.column width="35%"}
+![](assets/biancamuniz.jpg){alt="Bianca Muniz" style="border-radius: 50%;     max-"}
+:::
+
+::: {.column width="65%" style="font-size:25px"}
+-   🎲 Jornalista pela USP, especialista em Jornalismo de Dados, Automação e Data Storytelling pelo Insper
+-   Trabalho com jornalismo de dados na [Agência Pública](https://apublica.org/)
+-   👩🏿‍🔬 Biomédica e mestre em Ciências pela Unifesp
+-   ❤️ Amo desenhar, show, sescs e música emo
+:::
+:::::
+
+## Objetivos
+
+-   Explorar os pacotes tidytext, wordcloud,
+-   Aplicar as funções em um corpus
+-   Introduzir técnicas de análise de dados musicais.
+-   Aplicar processamento de texto para explorar letras e metadados.
+-   Usar pacotes do R para visualizações sobre músicas
+
+# Algumas definições {background-color="#562457"}
+
+## Tabset example
+
+::: panel-tabset
+## Corpus
+
+Content here for tabset 1 :)
+
+## Token
+
+More content here, for tabset 2 :)
+:::
+
+## Fontes de dados:
+
+-   APIs (Spotify, Genius, Vagalume, etc.).
+
+-   Planilhas com metadados musicais.
+
+-   Rankings (Billboard, [Spotify](https://charts.spotify.com/charts/view/regional-br-daily/latest)...)
+
+-   Seus dados!
+
+-   O que investigar em um dataset musical: Artista, Álbum, Ano, Letras, Gênero, Popularidade.
+
+## Pacotes úteis
+
+-   `tidyverse` (manipulação de dados).
+
+-   `text` (análise de texto);
+
+-   `ggplot2` (visualização).
+
+-   `tidytext` (NLP para texto).
+
+-   `spotifyr` (coleta de dados da API Spotify).
+
+## Exemplos e referências
+
+:::::::::::: panel-tabset
+## 1
+
+::::: columns
+::: {.column width="50%"}
+[![](assets/2Léxico-do-Samba-12-04-2024_07_45_AM.png)](https://www.lexicodosamba.com.br/)
+:::
+
+::: {.column width="50%"}
+[![](assets/Léxico-do-Samba-12-04-2024_07_45_AM.png)](https://www.lexicodosamba.com.br/)
+:::
+:::::
+
+## 2
+
+::::: columns
+::: {.column width="40%"}
+![](assets/2Natalia-Sayuri-natesayuri-•-Fotos-e-vídeos-do-Instagram-12-04-2024_07_30_AM.png){fig-align="center"}
+:::
+
+::: {.column width="40%"}
+![](assets/Natalia-Sayuri-natesayuri-•-Fotos-e-vídeos-do-Instagram-12-04-2024_07_30_AM.png){fig-align="center"}
+:::
+:::::
+
+## 3
+
+[![tayloR](assets/tayloR-I-used-R-audio-features-from-Spotify…-by-Simran-Vatsa-Medium-12-04-2024_07_35_AM.png)](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3)
+
+## 4
+
+::::: columns
+::: {.column width="40%"}
+![](assets/As-palavras-mais-comuns-nas-letras-das-músicas-de-Jorge-Ben-Jor-Nexo-Jornal-12-04-2024_08_58_AM.png){fig-align="center"}
+:::
+
+::: {.column width="40%"}
+![](assets/2As-palavras-mais-comuns-nas-letras-das-músicas-de-Jorge-Ben-Jor-Nexo-Jornal-12-04-2024_08_58_AM.png){fig-align="center"}
+:::
+:::::
+
+## 5
+
+![](assets/Blue-Christmas-A-data-driven-search-for-the-most-depressing-Christmas-song-—-Haystacks-by-Caitlin-Hudon-12-04-2024_07_36_AM.png){fig-align="center" width="600"}
+
+## 6
+
+![](assets/Brasil-é-o-país-que-mais-passou-a-ouvir-músicas-tristes-na-quarentena-20-06-2020-Ilustrada-Folha-12-04-2024_07_47_AM.png){fig-align="center" width="400"}
+::::::::::::
+
+## Por que analisar texto é importante?
+
+-   Sentimento, temas, frequência de palavras.
+
+## Fluxo de trabalho:
+
+-   Limpeza e tokenização (tidytext);
+-   Análise de frequência;
+-   Nuvem de palavras e associações;
+-   Análise de sentimentos em letras de músicas.
+
+# E o que vamos analisar hoje? {background-color="#562457"}
