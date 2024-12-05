@@ -173,3 +173,7 @@ summ %>%
   coord_flip() +
   labs(x = "Músicas", y = "Polaridades") +
   theme_bw()
+
+
+
+############ BÔNUS (não vimos na live): nuvem de palavras
