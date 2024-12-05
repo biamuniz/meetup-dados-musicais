@@ -177,3 +177,18 @@ summ %>%
 
 
 ############ BÔNUS (não vimos na live): nuvem de palavras
+
+
+wordcloud <- letras |>
+  unnest_tokens(word, letra_musica) |>
+  filter(!word %in% my_stopwords) |> # Filtrando palavras comuns (stopwords)
+  count(word)
+
+wordcloud |> 
+  filter(n > 10) |> 
+  wordcloud2(size = 2, minSize = 1, gridSize = 1,
+             color = "#9A373F",
+             backgroundColor = "white",
+             minRotation = -pi/4, maxRotation = pi/4, shuffle = FALSE,
+             rotateRatio = 0, shape = 'circle', ellipticity = 1,
+             widgetsize = NULL, figPath = NULL, hoverFunction = NULL)
