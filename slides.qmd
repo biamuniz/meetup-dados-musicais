@@ -39,6 +39,12 @@ editor:
 -   Aplicar processamento de texto para explorar letras e metadados.
 -   Usar pacotes do R para visualizações sobre músicas
 
+::: callout-note
+Links:\
+- [código](https://github.com/biamuniz/meetup-dados-musicais/blob/main/script_meetup.R) utilizado na live:\
+- [repositório](https://github.com/biamuniz/meetup-dados-musicais) no github
+:::
+
 ## Por que analisar texto é importante?
 
 -   Sentimento, temas, frequência de palavras.
