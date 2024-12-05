@@ -19,8 +19,8 @@ library(lexiconPT)   # Fornece léxicos para análise de sentimentos em portugu�
 
 # 1. Extração da lista de músicas
 artistas <- tibble(
-  url_artista = "https://www.vagalume.com.br/alcione",
-  nome_artista = "Alcione"
+  url_artista = "https://www.vagalume.com.br/alcione/",
+  nome_artista = "alcione"
 )
 
 # Função para coletar as músicas de cada artista
@@ -87,13 +87,13 @@ letras <- musicas %>%
 saveRDS(letras, "dados/letras-alcione.RDS")
 
 # 3. Análise de frequência de palavras
-count_words <- letras %>%
+contagem_palavras <- letras %>%
   unnest_tokens(word, letra_musica) %>%
   count(word) %>%
   arrange(desc(n)) %>%
   slice(1:30)
 
-count_words %>%
+contagem_palavras %>%
   ggplot(aes(x = reorder(word, n), y = n)) +
   geom_bar(stat = "identity", fill = "pink", colour = "black", alpha = 0.7) +
   coord_flip() +
@@ -103,14 +103,14 @@ count_words %>%
 
 # Filtrando palavras comuns (stopwords)
 my_stopwords <- c(stopwords("pt"))
-count_words <- count_words %>%
+contagem_palavras <- contagem_palavras %>%
   filter(!word %in% my_stopwords)
 
 # 4. Análise de bigramas
 letras %>%
   select(letra_musica) %>%
-  unnest_tokens(bigram, letra_musica, token = "ngrams", n = 2) %>%
-  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  unnest_tokens(bigrama, letra_musica, token = "ngrams", n = 2) %>%
+  separate(bigrama, c("word1", "word2"), sep = " ") %>%
   filter(!word1 %in% my_stopwords, !word2 %in% my_stopwords) %>%
   count(word1, word2, sort = TRUE) %>%
   mutate(word = paste(word1, word2)) %>%
@@ -124,23 +124,23 @@ letras %>%
 
 # Filtra as linhas que possuem o bigrama "chumbo trocado" na coluna `letra_musica`
 exemplo_bigrama <- letras %>%
-  filter(str_detect(letra_musica, "samba"))
+  filter(str_detect(letra_musica, "quatro horas"))
 
 # Printando as linhas correspondentes
 exemplo_bigrama
 
 
 # 5. Análise de sentimentos
-sentiments_pt <- oplexicon_v2.1 %>%
+sentimentos_pt <- oplexicon_v2.1 %>%
   mutate(word = term) %>%
   select(word, polarity)
 
-add_sentiments <- letras %>%
+letras_sentimentos <- letras %>%
   unnest_tokens(word, letra_musica) %>%
-  inner_join(sentiments_pt, by = "word") %>%
+  inner_join(sentimentos_pt, by = "word") %>%
   filter(!word %in% my_stopwords)
 
-add_sentiments %>%
+letras_sentimentos %>%
   group_by(polarity) %>%
   count(word) %>%
   top_n(15) %>%
@@ -153,6 +153,9 @@ add_sentiments %>%
   theme_bw()
 
 # 6. Identificando músicas mais positivas e negativas
+summ <- letras_sentimentos %>%
+  group_by(nome_musica) %>%
+  summarise(mean_pol = mean(polarity))
 summ %>%
   arrange(desc(mean_pol)) %>%
   slice_head(n = 15) %>%                             # Seleciona as 15 mais positivas
